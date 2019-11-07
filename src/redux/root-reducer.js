@@ -7,7 +7,7 @@ import recipeReducer from './recipe/recipe.reducer'
 import likeReducer from './like/like.reducer'
 
 const persistConfig = {
-  key: 'forkify3',
+  key: 'react-forkify',
   storage,
   blacklist: ['recipe']
 }

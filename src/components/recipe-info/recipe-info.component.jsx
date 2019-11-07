@@ -11,7 +11,6 @@ import TinyButtons from "../tiny-buttons/tiny-buttons.component";
 import "./recipe-info.styles.scss";
 
 const RecipeInfo = ({ time, servings}) => {
-  console.log(servings, "Serving in INFO");
   return (
     <div className="recipe__info-container">
       <div className="recipe__info">

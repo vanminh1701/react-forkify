@@ -7,9 +7,9 @@ import recipeReducer from './recipe/recipe.reducer'
 import likeReducer from './like/like.reducer'
 
 const persistConfig = {
-  key: 'forkify2',
+  key: 'forkify3',
   storage,
-  blacklist: ['recipe']
+  blacklist: ['recipe','like']
 }
 const rootReducer = combineReducers({
   result: resultReducer,

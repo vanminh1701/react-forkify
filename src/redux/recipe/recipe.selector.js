@@ -31,3 +31,8 @@ export const selectShoppingRenderCondition = createSelector(
   [selectRecipe],
   recipe => recipe.renderShopping
 )
+
+export const selectRecipeID = createSelector(
+  [selectRecipe],
+  recipe => recipe.recipe_id
+)

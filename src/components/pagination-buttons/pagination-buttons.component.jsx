@@ -39,7 +39,7 @@ class PaginationButtons extends React.Component {
         <PaginationButton shape={"triangle-right"} page={page + 1} status={"next"} onClick={this.clickNextPage}/>
       </div>
       )} else if (page === maxPage) {
-        return (
+        return (                          
           <div className="results__pages">
         <PaginationButton shape={"triangle-left"} page={page - 1} status={"prev"} onClick={this.clickPreviousPage}/>
       </div>

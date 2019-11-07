@@ -1,7 +1,7 @@
 import likeActionType from './like.type'
 
 const INITIAL_STATE = {
-  likeList: null
+  likeList: []
 };
 
 const likeReducer = (state = INITIAL_STATE, action) => {
@@ -9,15 +9,15 @@ const likeReducer = (state = INITIAL_STATE, action) => {
     case likeActionType.LIKE_RECIPE:
       return {
         ...state,
-        likeList: state.likeList.push(action.payload)
+        likeList: action.payload
       }
     case likeActionType.UNLIKE_RECIPE:
       return {
         ...state,
-        likeList: state.likeList.filter(el => el.id !== action.payload)
+        likeList: action.payload
       }
     default:
-      return state
+      return state 
   }
 }
 

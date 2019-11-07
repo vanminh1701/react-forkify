@@ -1,11 +1,11 @@
 import likeActionType from './like.type'
 
-export const likeRecipe = id => ({
+export const likeRecipe = recipe => ({
   type: likeActionType.LIKE_RECIPE,
-  payload: id
+  payload: recipe
 });
 
-export const unlikeRecipe = id => ({
+export const unlikeRecipe = recipe => ({
   type: likeActionType.UNLIKE_RECIPE,
-  payload: id
+  payload: recipe
 })

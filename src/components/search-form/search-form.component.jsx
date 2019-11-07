@@ -30,7 +30,7 @@ const SearchForm = ({ fetchSearchStartAsync }) => {
         handleChange={handleChange}
         value={value}
       />
-      <CustomButton type="submit" />
+      <CustomButton type="submit" shape={"magnifying-glass"} chidren={"SEARCH"}/>
     </form>
   )
 }

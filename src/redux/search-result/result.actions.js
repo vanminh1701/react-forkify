@@ -17,7 +17,6 @@ const fetchSearchFailure = err => ({
 
 export const fetchSearchStartAsync = query => {
   return async dispatch => {
-    console.log("query", query);
     dispatch(fetchSearchStart());
     try {
       const res = await 

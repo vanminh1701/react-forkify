@@ -2,7 +2,7 @@ import searchActionType from './search.types'
 
 const INITIAL_STATE = {
   searchResults: null,
-  isFetching: false,
+  renderCondition: "noFetch",
   errMessage: undefined
 };
 
@@ -11,12 +11,12 @@ const searchReducer = (state = INITIAL_STATE, action) => {
     case searchActionType.FETCH_SEARCH_START:
       return {
         ...state,
-        isFetching: true,
+        renderCondition: "isFetching",
       }
     case searchActionType.FETCH_SEARCH_SUCCESS:
       return {
         ...state,
-        isFetching: false,
+        renderCondition: "isFetched",
         searchResults: action.payload
       }
     case searchActionType.FETCH_SEARCH_FAILURE:

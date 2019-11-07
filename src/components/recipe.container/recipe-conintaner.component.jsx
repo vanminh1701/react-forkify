@@ -1,17 +1,14 @@
-import React from 'react'
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect'
 
-import { selectMountRecipe } from '../../redux/recipe/recipe.selector'
+import { selectRenderRecipeCondition } from '../../redux/recipe/recipe.selector'
 import Recipe from '../recipe/recipe.component'
+import WithRender from '../with-render/with-render.component'
 
-
-const RecipeContainer = ({ mountRecipe }) => {
-  return mountRecipe ? (<Recipe />) : ''
-}
 
 const mapStateToProps = createStructuredSelector({
-  mountRecipe: selectMountRecipe
+  renderCondition: selectRenderRecipeCondition
 })
 
-export default connect(mapStateToProps)(RecipeContainer);
+const RecipeContainer = connect(mapStateToProps)(WithRender(Recipe));
+export default RecipeContainer;

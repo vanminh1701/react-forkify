@@ -24,3 +24,8 @@
     fill: currentColor;
   }
 }
+
+.invert {
+  flex-direction: row-reverse;
+  padding-left: 3rem;
+}

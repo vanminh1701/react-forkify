@@ -1,17 +1,18 @@
-import React from 'react'
 import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect'
+import { compose } from 'redux'
 
-import { selectMountSearch } from '../../redux/search-result/search.selector'
+import { selectSearchRenderCondition } from '../../redux/search-result/search.selector'
 
 import SearchResult from '../search-result/search-result.component'
+import WithRender from '../with-render/with-render.component';
 
-const SearchResultContainer = ({ mountSearch }) => {
-  return mountSearch ? (<SearchResult />) : ''
-}
 
-const mapStateToProps = createStructuredSelector({
-  mountSearch: selectMountSearch
+const mapStateToProps = state => ({
+  renderCondition: selectSearchRenderCondition(state)
 })
 
-export default connect(mapStateToProps)(SearchResultContainer);
+const SearchResultContainer = compose(
+  connect(mapStateToProps),
+  WithRender
+  )(SearchResult)
+export default SearchResultContainer;

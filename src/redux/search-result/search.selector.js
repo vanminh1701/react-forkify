@@ -7,7 +7,12 @@ export const  selectSearchResult = createSelector(
   results => results.searchResults
 )
 
-export const selectMountSearch = createSelector(
+export const selectSearchRenderCondition = createSelector(
   [selectResult],
-  results => !!results.searchResults
+  results => results.renderCondition
+)
+
+export const selectPages = createSelector(
+  [selectResult],
+  results => Math.ceil(results.searchResults.length / 10)
 )

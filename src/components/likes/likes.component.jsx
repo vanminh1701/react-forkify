@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { ReactComponent as HeartIcon } from '../../img/icons.svg';
-
 import './likes.styles.scss';
 
 const Likes = () => (

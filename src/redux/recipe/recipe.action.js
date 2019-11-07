@@ -1,31 +1,52 @@
 import { key } from '../../config.api'
 import recipeActionTypes from './recipe.types'
 
-const fetchSearchStart = () => ({
-  type: recipeActionTypes.FETCH_SEARCH_START
+import { parseIngrdients } from './recipe.utils'
+
+const fetchRecipeStart = () => ({
+  type: recipeActionTypes.FETCHING_RECIPE_START
 });
 
-const fetchSearchSuccess = results => ({
-  type: recipeActionTypes.FETCH_SEARCH_SUCCESS,
-  payload: results
+const fetchRecipeSuccess = recipe => ({
+  type: recipeActionTypes.FETCHING_RECIPE_SUCCESS,
+  payload: recipe
 })
 
-const fetchSearchFailure = err => ({
-  type: recipeActionTypes.FETCH_SEARCH_FAILURE,
+const fetchRecipeFailure = err => ({
+  type: recipeActionTypes.FETCHING_RECIPE_FAILURE,
   payload: err
 })
 
-export const fetchSearchStartAsync = id => {
+export const fetchRecipeStartAsync = id => {
   return async dispatch => {
-    dispatch(fetchSearchStart());
+    dispatch(fetchRecipeStart());
     try {
-      const res = await 
+      let recipe = await 
         fetch(`https://www.food2fork.com/api/get?key=${key}&rId=${id}`)
         .then(data => data.json())
-        .then(data => data)
-      dispatch(fetchSearchSuccess(res.recipes));
+        .then(data => data.recipe)
+      recipe.ingredients = parseIngrdients(recipe.ingredients);
+      // console.log("RECIPE", recipe)
+      dispatch(fetchRecipeSuccess(recipe));
     } catch (error) {
-      dispatch(fetchSearchFailure(error));
+      dispatch(fetchRecipeFailure(error));
     }
   }
 }
+
+export const plusServings = () => ({
+  type: recipeActionTypes.PLUS_SERVINGS
+})
+
+export const minusServings = () => ({
+  type: recipeActionTypes.MINUS_SERVINGS
+})
+
+export const renderShopping = () => ({
+  type: recipeActionTypes.RENDER_SHOPPING
+})
+
+export const deleteIngredient = id => ({
+  type: recipeActionTypes.DELETE_INGREDIENT,
+  payload: id
+})

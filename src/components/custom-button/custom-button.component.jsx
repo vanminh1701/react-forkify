@@ -2,12 +2,17 @@ import React from 'react'
 
 import './custom-button.styles.scss'
 
-const CustomButton = () => (
-  <button className="search__btn btn">
+const CustomButton = ({shape, chidren, invert, renderShopping }) => (
+  <button 
+    className={`btn ${invert ? 'invert' : ''}`}
+    onClick={() => {
+      if (renderShopping) renderShopping()
+    }}
+  >
     <svg className="search__icon">
-      <use href="../../img/icons.svg#icon-magnifying-glass" />
+      <use href={`../../img/icons.svg#icon-${shape}`} />
     </svg>
-    <span>SEARCH</span>
+    <span>{chidren}</span>
   </button>
 )
 
